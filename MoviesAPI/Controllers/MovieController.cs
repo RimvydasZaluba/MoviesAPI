@@ -88,5 +88,32 @@ namespace MoviesAPI.Controllers
                 return StatusCode(500, "Something went wrong");
             }
         }
+
+        /// <summary>
+        /// Get top 5 specific user rated movies
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("top5/{userId}")]
+        public IActionResult GetTop5ByUser(int userId)
+        {
+            try
+            {
+                var movies = _movieService.GetTop5ByUser(userId);
+
+                if (movies == null || !movies.Any())
+                {
+                    _logger.LogInformation("No movies were found with the requested filters");
+                    return NotFound();
+                }
+
+                return Ok(movies);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.Message);
+                return StatusCode(500, "Something went wrong");
+            }
+        }
+
     }
 }

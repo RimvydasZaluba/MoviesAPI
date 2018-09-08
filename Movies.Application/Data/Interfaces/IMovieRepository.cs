@@ -9,5 +9,7 @@ namespace Movies.Application.Data.Interfaces
         IEnumerable<Movie> GetAll(FilterModel filter);
 
         IEnumerable<Movie> GetTop5();
+
+        IEnumerable<Movie> GetTop5ByUser(int userId);
     }
 }

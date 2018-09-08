@@ -24,5 +24,10 @@ namespace Movies.Application.Services
         {
             return _movieRepository.GetTop5();
         }
+
+        public IEnumerable<Movie> GetTop5ByUser(int userId)
+        {
+            return _movieRepository.GetTop5ByUser(userId);
+        }
     }
 }

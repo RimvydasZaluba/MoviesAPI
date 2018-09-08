@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using Movies.Application.Data.Interfaces;
 using Movies.Data.Contexts;
 using Movies.Domain;
@@ -19,11 +20,7 @@ namespace Movies.Data.Repositories
 
         public IEnumerable<Movie> GetAll(FilterModel filter)
         {
-            var movies = _movieDb.Movies
-                //.Include(movie => movie.Genres)
-                //    .ThenInclude(genre => genre.Genre)
-                //.Include(movie => movie.Ratings)
-                .Select(movie => movie);
+            var movies = _movieDb.Movies.Select(movie => movie);
 
             if (!string.IsNullOrEmpty(filter.TitleSearch))
             {
@@ -69,6 +66,24 @@ namespace Movies.Data.Repositories
                 AverageRating = CalculateRating(o.Ratings)
             }).ToList();
 
+        }
+
+        public IEnumerable<Movie> GetTop5ByUser(int userId)
+        {
+            var user = _movieDb.Users.Include(o => o.Ratings).ThenInclude(o => o.Movie).FirstOrDefault(o => o.Id == userId);
+
+            return user?.Ratings
+                .OrderByDescending(o => o.Stars)
+                .ThenBy(o => o.Movie.Title)
+                .Take(5)
+                .Select(o => new Movie
+                {
+                    Id = o.Movie.Id,
+                    Title = o.Movie.Title,
+                    RunningTime = o.Movie.RunningTime,
+                    YearOfRelease = o.Movie.ReleaseDate.Year,
+                    AverageRating = CalculateRating(o.Movie.Ratings)
+                }).ToList();
         }
 
         private double CalculateRating(IEnumerable<Entities.Rating> ratings)
