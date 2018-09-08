@@ -56,7 +56,19 @@ namespace Movies.Data.Repositories
 
         public IEnumerable<Movie> GetTop5()
         {
-            return null;
+            return _movieDb.Movies
+                .OrderByDescending(o => o.Ratings == null ? 0 : o.Ratings.Average(z => z.Stars))
+                .ThenBy(o => o.Title)
+                .Take(5)
+                .Select(o => new Movie
+            {
+                Id = o.Id,
+                Title = o.Title,
+                RunningTime = o.RunningTime,
+                YearOfRelease = o.ReleaseDate.Year,
+                AverageRating = CalculateRating(o.Ratings)
+            }).ToList();
+
         }
 
         private double CalculateRating(IEnumerable<Entities.Rating> ratings)
