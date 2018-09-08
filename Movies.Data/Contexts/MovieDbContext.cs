@@ -54,14 +54,14 @@ namespace Movies.Data.Contexts
         private void SeedData(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Movie>().HasData(
-                new Movie { Id = 1, Name = "Deadpool", ReleaseDate = new DateTime(2016,2,10) },
-                new Movie { Id = 2, Name = "Freddy vs Jason", ReleaseDate = new DateTime(2003, 8, 15) },
-                new Movie { Id = 3, Name = "The Crow", ReleaseDate = new DateTime(1994, 6, 10) },
-                new Movie { Id = 4, Name = "Dogma", ReleaseDate = new DateTime(1999, 12, 26) },
-                new Movie { Id = 5, Name = "The Hitchhiker's Guide to the Galaxy", ReleaseDate = new DateTime(2005, 4, 28) },
-                new Movie { Id = 6, Name = "Seven Psychopaths", ReleaseDate = new DateTime(2012, 12, 5) },
-                new Movie { Id = 7, Name = "Moon", ReleaseDate = new DateTime(2009, 7, 17) },
-                new Movie { Id = 8, Name = "Equilibrium ", ReleaseDate = new DateTime(2002, 3, 14) }
+                new Movie { Id = 1, Title = "Deadpool", ReleaseDate = new DateTime(2016,2,10), RunningTime = 108 },
+                new Movie { Id = 2, Title = "Freddy vs Jason", ReleaseDate = new DateTime(2003, 8, 15), RunningTime = 97 },
+                new Movie { Id = 3, Title = "The Crow", ReleaseDate = new DateTime(1994, 6, 10), RunningTime = 102 },
+                new Movie { Id = 4, Title = "Dogma", ReleaseDate = new DateTime(1999, 12, 26), RunningTime = 130 },
+                new Movie { Id = 5, Title = "The Hitchhiker's Guide to the Galaxy", ReleaseDate = new DateTime(2005, 4, 28), RunningTime = 109 },
+                new Movie { Id = 6, Title = "Seven Psychopaths", ReleaseDate = new DateTime(2012, 12, 5), RunningTime = 110 },
+                new Movie { Id = 7, Title = "Moon", ReleaseDate = new DateTime(2009, 7, 17), RunningTime = 107 },
+                new Movie { Id = 8, Title = "Equilibrium ", ReleaseDate = new DateTime(2002, 3, 14), RunningTime = 107 }
                 );
 
             modelBuilder.Entity<User>().HasData(

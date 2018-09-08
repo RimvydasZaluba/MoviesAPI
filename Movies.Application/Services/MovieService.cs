@@ -1,6 +1,7 @@
 ﻿using Movies.Application.Data.Interfaces;
 using Movies.Application.Services.Interfaces;
 using Movies.Domain;
+using Movies.Domain.Helper;
 using System.Collections.Generic;
 
 namespace Movies.Application.Services
@@ -14,9 +15,14 @@ namespace Movies.Application.Services
             _movieRepository = movieRepository;
         }
 
-        public IEnumerable<Movie> GetAll()
+        public IEnumerable<Movie> GetAll(FilterModel filter)
         {
-            return _movieRepository.GetAll();
+            return _movieRepository.GetAll(filter);
+        }
+
+        public IEnumerable<Movie> GetTop5()
+        {
+            return _movieRepository.GetTop5();
         }
     }
 }

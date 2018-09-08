@@ -27,8 +27,9 @@ namespace Movies.Data.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: true),
-                    ReleaseDate = table.Column<DateTime>(nullable: false)
+                    Title = table.Column<string>(nullable: true),
+                    ReleaseDate = table.Column<DateTime>(nullable: false),
+                    RunningTime = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -114,17 +115,17 @@ namespace Movies.Data.Migrations
 
             migrationBuilder.InsertData(
                 table: "Movies",
-                columns: new[] { "Id", "Name", "ReleaseDate" },
+                columns: new[] { "Id", "ReleaseDate", "RunningTime", "Title" },
                 values: new object[,]
                 {
-                    { 8, "Equilibrium ", new DateTime(2002, 3, 14, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 7, "Moon", new DateTime(2009, 7, 17, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 6, "Seven Psychopaths", new DateTime(2012, 12, 5, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 5, "The Hitchhiker's Guide to the Galaxy", new DateTime(2005, 4, 28, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 3, "The Crow", new DateTime(1994, 6, 10, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 2, "Freddy vs Jason", new DateTime(2003, 8, 15, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 1, "Deadpool", new DateTime(2016, 2, 10, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 4, "Dogma", new DateTime(1999, 12, 26, 0, 0, 0, 0, DateTimeKind.Unspecified) }
+                    { 8, new DateTime(2002, 3, 14, 0, 0, 0, 0, DateTimeKind.Unspecified), 107, "Equilibrium " },
+                    { 7, new DateTime(2009, 7, 17, 0, 0, 0, 0, DateTimeKind.Unspecified), 107, "Moon" },
+                    { 6, new DateTime(2012, 12, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), 110, "Seven Psychopaths" },
+                    { 5, new DateTime(2005, 4, 28, 0, 0, 0, 0, DateTimeKind.Unspecified), 109, "The Hitchhiker's Guide to the Galaxy" },
+                    { 3, new DateTime(1994, 6, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), 102, "The Crow" },
+                    { 2, new DateTime(2003, 8, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), 97, "Freddy vs Jason" },
+                    { 1, new DateTime(2016, 2, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), 108, "Deadpool" },
+                    { 4, new DateTime(1999, 12, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), 130, "Dogma" }
                 });
 
             migrationBuilder.InsertData(

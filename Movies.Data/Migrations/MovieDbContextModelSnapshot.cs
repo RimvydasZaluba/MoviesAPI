@@ -47,23 +47,25 @@ namespace Movies.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Name");
-
                     b.Property<DateTime>("ReleaseDate");
+
+                    b.Property<int>("RunningTime");
+
+                    b.Property<string>("Title");
 
                     b.HasKey("Id");
 
                     b.ToTable("Movies");
 
                     b.HasData(
-                        new { Id = 1, Name = "Deadpool", ReleaseDate = new DateTime(2016, 2, 10, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                        new { Id = 2, Name = "Freddy vs Jason", ReleaseDate = new DateTime(2003, 8, 15, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                        new { Id = 3, Name = "The Crow", ReleaseDate = new DateTime(1994, 6, 10, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                        new { Id = 4, Name = "Dogma", ReleaseDate = new DateTime(1999, 12, 26, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                        new { Id = 5, Name = "The Hitchhiker's Guide to the Galaxy", ReleaseDate = new DateTime(2005, 4, 28, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                        new { Id = 6, Name = "Seven Psychopaths", ReleaseDate = new DateTime(2012, 12, 5, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                        new { Id = 7, Name = "Moon", ReleaseDate = new DateTime(2009, 7, 17, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                        new { Id = 8, Name = "Equilibrium ", ReleaseDate = new DateTime(2002, 3, 14, 0, 0, 0, 0, DateTimeKind.Unspecified) }
+                        new { Id = 1, ReleaseDate = new DateTime(2016, 2, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), RunningTime = 108, Title = "Deadpool" },
+                        new { Id = 2, ReleaseDate = new DateTime(2003, 8, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), RunningTime = 97, Title = "Freddy vs Jason" },
+                        new { Id = 3, ReleaseDate = new DateTime(1994, 6, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), RunningTime = 102, Title = "The Crow" },
+                        new { Id = 4, ReleaseDate = new DateTime(1999, 12, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), RunningTime = 130, Title = "Dogma" },
+                        new { Id = 5, ReleaseDate = new DateTime(2005, 4, 28, 0, 0, 0, 0, DateTimeKind.Unspecified), RunningTime = 109, Title = "The Hitchhiker's Guide to the Galaxy" },
+                        new { Id = 6, ReleaseDate = new DateTime(2012, 12, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), RunningTime = 110, Title = "Seven Psychopaths" },
+                        new { Id = 7, ReleaseDate = new DateTime(2009, 7, 17, 0, 0, 0, 0, DateTimeKind.Unspecified), RunningTime = 107, Title = "Moon" },
+                        new { Id = 8, ReleaseDate = new DateTime(2002, 3, 14, 0, 0, 0, 0, DateTimeKind.Unspecified), RunningTime = 107, Title = "Equilibrium " }
                     );
                 });
 
