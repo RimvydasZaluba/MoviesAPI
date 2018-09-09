@@ -34,7 +34,9 @@ namespace MoviesAPI
             services.AddDbContext<MovieDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("MovieDBConnectionString")));
 
             services.AddScoped<IMovieRepository, MovieRepository>();
+            services.AddScoped<IRatingRepository, RatingRepository>();
             services.AddScoped<IMovieService, MovieService>();
+            services.AddScoped<IRatingService, RatingService>();
 
             services.AddSwaggerGen(c =>
             {
